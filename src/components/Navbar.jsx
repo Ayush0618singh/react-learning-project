@@ -27,7 +27,8 @@ function Navbar() {
                     <Link className="nav-link" to="/effect">useEffect</Link>
                     <Link className="nav-link" to="/users">Users</Link>
                     <Link className="nav-link" to="/users-axios">Axios</Link>
-                      <Link className="nav-link" to="/crud">CRUD</Link>
+                    <Link className="nav-link" to="/crud">CRUD</Link>
+                    <Link className="nav-link" to="/profile">Profile</Link>
 
 
                 </div>

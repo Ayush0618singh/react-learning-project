@@ -1,14 +1,26 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 function StudentCRUD() {
-    const[students, setStudents] = useState([
-        {id: 1, name: "Ayush", course: "MCA"},
-        {id: 2, name: "Gopal", course: "B.Tech"}
-    ]);
+    const[students, setStudents] = useState(() => {
+        const savedStudents = localStorage.getItem("students");
+
+        if (savedStudents) {
+            return JSON.parse(savedStudents);
+        }
+        return [
+            {id : 1, name: "Ayush", course: "MCA"},
+            {id : 2, name: "Rahul", course: "B.Tech"}
+        ];
+    });
+
     const[name, setName] = useState("");
     const[course, setCourse] = useState("");
     
     const[editId, setEditId] = useState(null);
     const[isEditing, setIsEditing] = useState(false);
+
+    useEffect(() => {
+        localStorage.setItem("students", JSON.stringify(students));
+    }, [students]);
 
     function addStudent() {
         if(name === "" || course === "") {

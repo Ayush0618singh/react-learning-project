@@ -1,7 +1,10 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
+import UserContext from "./context/UserContext";
+
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+
 import Counter from "./pages/Counter";
 import InputDemo from "./pages/InputDemo";
 import FormDemo from "./pages/FormDemo";
@@ -14,6 +17,7 @@ import UseEffectDemo from "./pages/UseEffectDemo";
 import Users from "./pages/Users";
 import UsersAxios from "./pages/UsersAxios";
 import StudentCRUD from "./pages/StudentCRUD";
+import Profile from "./pages/Profile";
 
 import Home from "./pages/Home";
 import About from "./pages/About";
@@ -22,6 +26,19 @@ import Contact from "./pages/Contact";
 
 function App() {
   return (
+    <UserContext.Provider
+      value = {{
+        name: "Ayush",
+        course: "MCA",
+        tech: "MERN Stack",
+        college: "Lloyd Institute of Engineering & Taechnology",
+        city: "Noida",
+        email: "ayush0618singh@gmail.com",
+        mobile: "6393307771"
+
+      }}
+    >
+
     <BrowserRouter>
 
       <Header/>
@@ -55,12 +72,14 @@ function App() {
          <Route path="/users" element={<Users />} />
          <Route path="/users-axios" element={<UsersAxios />} />
          <Route path="/crud" element={<StudentCRUD />} />
+         <Route path="/profile" element={<Profile />} />
 
       </Routes>
 
       <Footer/>
 
     </BrowserRouter>
+    </UserContext.Provider>
   );
 }
 

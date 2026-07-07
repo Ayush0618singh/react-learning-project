@@ -1,3 +1,4 @@
+import Loader from "../components/Loader";
 import { useEffect, useState } from "react";
 import axios from "axios";
 
@@ -12,13 +13,14 @@ function UsersAxios() {
             setUsers(response.data);
             setLoading(false);
         })
-        .catch(() => {
-            setError("Something Went Wrong!");
+        .catch((err) => {
+            setError("Something went Wrong! Please try again.");
             setLoading(false);
         });
     }, []);
 
     if (loading) {
+        return <Loader />;
         return (
             <div className="container mt-5 text-center">
                 <div className="spinner-border text-primary"></div>
@@ -30,8 +32,10 @@ function UsersAxios() {
 
     if (error) {
         return (
-            <div className="container mt-5 text-center">
-                <h2 className="text-danger">{error}</h2>
+            <div className="container mt-5">
+                <div className="alert alert-danger">
+                    {error}
+                </div>
 
             </div>
         );

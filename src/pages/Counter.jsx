@@ -1,7 +1,13 @@
-import { useState } from "react";
+import useCounter from "../hooks/useCounter";
 function Counter()
 {
-    const [count, setCount] = useState(0);
+    const {
+        count,
+        increment,
+        decrement,
+        reset
+
+    } =useCounter();
 
     return(
         <div className="container mt-5">
@@ -15,7 +21,7 @@ function Counter()
                 
                     <button
                         className="btn btn-success me-2"
-                        onClick={() => setCount(count + 1)}
+                        onClick={increment}
                     
                     >
                         Increase
@@ -24,7 +30,7 @@ function Counter()
                     
                     <button 
                         className="btn btn-danger me-2"
-                        onClick={() => setCount(count - 1)}
+                        onClick={decrement}
                         
                     >
                         Decrease
@@ -33,7 +39,7 @@ function Counter()
                         
                     <button 
                         className="btn btn-warning"
-                        onClick={() => setCount(0)}
+                        onClick={reset}
                         
                     >
                         Reset

@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import UserContext from "./context/UserContext";
@@ -18,6 +20,10 @@ import Users from "./pages/Users";
 import UsersAxios from "./pages/UsersAxios";
 import StudentCRUD from "./pages/StudentCRUD";
 import Profile from "./pages/Profile";
+import Login from "./pages/Login";
+import Dashboard from "./pages/Dashboard";
+import ProtectedRoute from "./components/ProtectedRoute";
+import NotFound from "./pages/NotFound";
 
 import Home from "./pages/Home";
 import About from "./pages/About";
@@ -25,6 +31,9 @@ import Service from "./pages/Service";
 import Contact from "./pages/Contact";
 
 function App() {
+
+   const[isLoggedIn, setIsLoggedIn] = useState(false);
+
   return (
     <UserContext.Provider
       value = {{
@@ -39,22 +48,22 @@ function App() {
       }}
     >
 
-    <BrowserRouter>
+     <BrowserRouter>
 
-      <Header/>
+        <Header/>
 
-      <Routes>
-        <Route
-        path="/"
-        element={
-          <Home
-           name="Ayush" 
-           college="Lloyd Institute of Engineering & Technology"
-           course= "Master of Computer Applications(MCA)"
-           tech= "MERN Stack"
-          />
-        }
-       />
+        <Routes>
+          <Route
+           path="/"
+            element={
+              <Home
+                name="Ayush" 
+                college="Lloyd Institute of Engineering & Technology"
+                course= "Master of Computer Applications(MCA)"
+                tech= "MERN Stack"
+              />
+            }
+         />
 
          <Route path="/about" element={<About />} />
          <Route path="/service" element={<Service />} />
@@ -73,12 +82,31 @@ function App() {
          <Route path="/users-axios" element={<UsersAxios />} />
          <Route path="/crud" element={<StudentCRUD />} />
          <Route path="/profile" element={<Profile />} />
+         <Route
+            path="/login" 
+                element ={<Login setIsLoggedIn ={setIsLoggedIn} /> }
+          />
+          
+          <Route
+            path="/dashboard"
+              element={
+                <ProtectedRoute isLoggedIn={isLoggedIn}>
+                  <Dashboard  
+                      setIsLoggedIn={setIsLoggedIn}
+                  />
+                </ProtectedRoute>
+              }
+          />
 
-      </Routes>
+          <Route
+            path="*"
+            element={<NotFound />}
+          />
+        </Routes>
 
-      <Footer/>
+        <Footer/>
 
-    </BrowserRouter>
+      </BrowserRouter>
     </UserContext.Provider>
   );
 }

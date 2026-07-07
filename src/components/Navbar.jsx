@@ -9,7 +9,7 @@ function Navbar() {
                 My Website
                 </Link>
 
-                <div className="navbar-nav ms -auto">
+                <div className="navbar-nav ms-auto">
                     
                     <Link className="nav-link" to="/">Home</Link>
                     <Link className="nav-link" to="/about">About</Link>
@@ -23,6 +23,12 @@ function Navbar() {
                     <Link className="nav-link" to="/theme">Theme</Link>
                     <Link className="nav-link" to="/students">Students</Link>
                     <Link className="nav-link" to="/filter">Filter</Link>
+                    <Link className="nav-link" to="/search">Search</Link>
+                    <Link className="nav-link" to="/effect">useEffect</Link>
+                    <Link className="nav-link" to="/users">Users</Link>
+                    <Link className="nav-link" to="/users-axios">Axios</Link>
+                      <Link className="nav-link" to="/crud">CRUD</Link>
+
 
                 </div>
             </div>

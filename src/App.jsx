@@ -9,7 +9,11 @@ import Conditional from "./pages/Conditional";
 import Theme from "./pages/Theme";
 import Students from "./pages/Students";
 import FilterStudents from "./pages/FilterStudents";
-
+import SearchStudents from "./pages/SearchStudents";
+import UseEffectDemo from "./pages/UseEffectDemo";
+import Users from "./pages/Users";
+import UsersAxios from "./pages/UsersAxios";
+import StudentCRUD from "./pages/StudentCRUD";
 
 import Home from "./pages/Home";
 import About from "./pages/About";
@@ -46,6 +50,11 @@ function App() {
          <Route path="/theme" element={<Theme />} />
          <Route path="/students" element={<Students />} />
          <Route path="/filter" element={<FilterStudents />} />
+         <Route path="/search" element={<SearchStudents />} />
+         <Route path="/effect" element={<UseEffectDemo />} />
+         <Route path="/users" element={<Users />} />
+         <Route path="/users-axios" element={<UsersAxios />} />
+         <Route path="/crud" element={<StudentCRUD />} />
 
       </Routes>
 
